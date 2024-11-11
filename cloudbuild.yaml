@@ -34,3 +34,5 @@ artifacts:
   objects:
     location: 'gs://cedrics-bucket001'
     paths: ['path/to/backend/output/**']
+
+logsBucket: 'gs://cedrics-bucket001'
