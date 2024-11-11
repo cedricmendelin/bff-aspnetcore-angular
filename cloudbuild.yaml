@@ -1,15 +1,15 @@
 steps:
 # Step 1: Install Node.js dependencies
-- name: 'node:14'
-  entrypoint: 'npm'
-  args: ['install']
-  dir: 'ui'
+# - name: 'node:14'
+#   entrypoint: 'npm'
+#   args: ['install']
+#   dir: 'ui'
 
-# Step 2: Build the Angular frontend
-- name: 'node:14'
-  entrypoint: 'npm'
-  args: ['run', 'build']
-  dir: 'ui'
+# # Step 2: Build the Angular frontend
+# - name: 'node:14'
+#   entrypoint: 'npm'
+#   args: ['run', 'build']
+#   dir: 'ui'
 
 # Step 3: Install .NET SDK
 - name: 'mcr.microsoft.com/dotnet/sdk:8.0'
