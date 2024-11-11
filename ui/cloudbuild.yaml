@@ -1,0 +1,36 @@
+steps:
+# Step 1: Install Node.js dependencies
+- name: 'node:14'
+  entrypoint: 'npm'
+  args: ['install']
+  dir: 'ui'
+
+# Step 2: Build the Angular frontend
+- name: 'node:14'
+  entrypoint: 'npm'
+  args: ['run', 'build']
+  dir: 'ui'
+
+# Step 3: Install .NET SDK
+- name: 'mcr.microsoft.com/dotnet/sdk:8.0'
+  entrypoint: 'dotnet'
+  args: ['restore']
+  dir: 'server'
+
+# Step 4: Build the ASP.NET Core backend
+- name: 'mcr.microsoft.com/dotnet/sdk:8.0'
+  entrypoint: 'dotnet'
+  args: ['build', '--configuration', 'Release']
+  dir: 'server'
+
+# Step 5: Publish the ASP.NET Core backend
+- name: 'mcr.microsoft.com/dotnet/sdk:8.0'
+  entrypoint: 'dotnet'
+  args: ['publish', '--configuration', 'Release', '--output', 'output']
+  dir: 'server'
+
+# Artifacts to be stored
+artifacts:
+  objects:
+    location: 'gs://your-bucket-name'
+    paths: ['path/to/backend/output/**']
