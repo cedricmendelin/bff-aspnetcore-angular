@@ -32,5 +32,5 @@ steps:
 # Artifacts to be stored
 artifacts:
   objects:
-    location: 'gs://your-bucket-name'
+    location: 'gs://cedrics-bucket001'
     paths: ['path/to/backend/output/**']
